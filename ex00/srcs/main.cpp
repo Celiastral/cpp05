@@ -3,16 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eandre <eandre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:08:29 by eandre            #+#    #+#             */
-/*   Updated: 2024/09/23 18:04:38 by eandre           ###   ########.fr       */
+/*   Updated: 2024/09/23 22:58:28 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Bureaucrat.hpp"
+#include <cstdlib>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	return (1);
+	if (argc > 2)
+	{
+		try
+		{
+			Bureaucrat	oui(std::atoi(argv[2]), argv[1]);
+			std::cout << oui;
+		}
+		catch (const std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+	else
+	{
+		Bureaucrat	oui(10, "oui");
+		std::cout << oui;
+	}
+	try
+	{
+		Bureaucrat	oui(150, "oui");
+		oui.gradeDecrease();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat	oui(1, "oui");
+		oui.gradeIncrease();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
