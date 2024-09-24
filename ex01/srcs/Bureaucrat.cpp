@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:08:24 by eandre            #+#    #+#             */
-/*   Updated: 2024/09/23 23:00:11 by eandre           ###   ########.fr       */
+/*   Updated: 2024/09/24 23:28:50 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other_Bureaucrat)
 	is_grade_valid();
 	std::cout << "Bureaucrat Copy assignment operator called" << std::endl;
 	return (*this);
+}
+
+void	Bureaucrat::signForm(const Form &Form)
+{
+	if (grade > Form.getGradeSign())
+	{
+		std::cout << name <<  " couldn’t sign " << Form.getName() << " because " << name << "'s grade is to low." << std::endl;
+		return ;
+	}
+	if (Form.getIsSigned() == true)
+	{
+		std::cout << name <<  " couldn’t sign " << Form.getName() << " because " << Form.getName() << " is already signed." << std::endl;
+		return ;
+	}
+	std::cout << name << " signed " << Form.getName() << std::endl;
 }
 
 const std::string	&Bureaucrat::getName() const
