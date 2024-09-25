@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:35:28 by eandre            #+#    #+#             */
-/*   Updated: 2024/09/24 23:05:21 by eandre           ###   ########.fr       */
+/*   Updated: 2024/09/25 13:07:34 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ Form::Form(const Form &other_Form) : is_signed(other_Form.is_signed), name(other
 
 const char	*Form::GradeTooLowException::what() const throw()
 {
-	return ("Grade is to high !");
+	return ("Grade is to low !");
 }
 
 const char	*Form::GradeTooHighException::what() const throw()
 {
-	return ("Grade is to low !");
+	return ("Grade is to high !");
 }
 
 void	Form::beSigned(const Bureaucrat &Bureaucrat)

@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:08:29 by eandre            #+#    #+#             */
-/*   Updated: 2024/09/24 23:34:53 by eandre           ###   ########.fr       */
+/*   Updated: 2024/09/25 13:10:22 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 {
 	if (argc > 3)
 	{
-		std::cout << "\033[0;32m#### CHOSE YOUR CHARACTER ####\033[0m" << std::endl;
+		std::cout << "\033[0;32m#### CHOOSE YOUR CHARACTER ####\033[0m" << std::endl;
 		try
 		{
 			Form	form(std::atoi(argv[1]), std::atoi(argv[2]), argv[3]);

@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:08:29 by eandre            #+#    #+#             */
-/*   Updated: 2024/09/24 10:22:53 by eandre           ###   ########.fr       */
+/*   Updated: 2024/09/25 13:11:48 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 {
 	if (argc > 2)
 	{
+		std::cout << "\033[0;32m#### CHOOSE YOUR CHARACTER ####\033[0m" << std::endl;
 		try
 		{
 			Bureaucrat	oui(std::atoi(argv[2]), argv[1]);
@@ -29,9 +30,11 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
+		std::cout << "\033[0;32m#### DEFAULT CHARACTER ####\033[0m" << std::endl;
 		Bureaucrat	oui(10, "oui");
 		std::cout << oui;
 	}
+	std::cout << std::endl << "\033[0;32m#### OVERFLOW GRADE ####\033[0m" << std::endl;
 	try
 	{
 		Bureaucrat	oui(150, "Decr");
@@ -41,6 +44,7 @@ int	main(int argc, char **argv)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << std::endl << "\033[0;32m#### UNDERFLOW GRADE ####\033[0m" << std::endl;
 	try
 	{
 		Bureaucrat	oui(1, "Incr");
