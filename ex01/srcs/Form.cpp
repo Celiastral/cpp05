@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:35:28 by eandre            #+#    #+#             */
-/*   Updated: 2024/09/25 13:07:34 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/10 21:40:50 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ std::ostream &operator<<(std::ostream &out, Form const &Form)
 		out << "Unsigned Form ";
 	else
 		out << "Signed Form ";
-	out << Form.getName() << ", needing grade " << Form.getGradeSign() << " for sign "  << " and grade " << Form.getGradeExec() << " for execute" << std::endl;
+	out << Form.getName() << ", needing grade " << Form.getGradeSign() << " for sign"  << " and grade " << Form.getGradeExec() << " for execute" << std::endl;
 	return (out);
 }
