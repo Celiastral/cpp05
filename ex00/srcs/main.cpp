@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:08:29 by eandre            #+#    #+#             */
-/*   Updated: 2024/09/25 13:11:48 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:06:51 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		}
 		catch (const std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 		}
 	}
 	else
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 	}
 	std::cout << std::endl << "\033[0;32m#### UNDERFLOW GRADE ####\033[0m" << std::endl;
 	try
@@ -52,6 +52,6 @@ int	main(int argc, char **argv)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 	}
 }

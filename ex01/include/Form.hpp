@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 10:35:25 by eandre            #+#    #+#             */
-/*   Updated: 2024/11/07 14:56:23 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:11:50 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class Form
 {
 	public :
 	
+		//=== Orthodox class mandatory ===
+	
 		Form();
 		Form(const int grade_sign_, const int grade_exec_, const std::string &name_);
 		Form(const Form &other_Form);
@@ -28,12 +30,18 @@ class Form
 
 		Form				&operator=(const Form &other_Form);
 
+		//=== Getter ===
+
 		const std::string	&getName() const;
 		int					getGradeSign() const;
 		int					getGradeExec() const;
 		bool				getIsSigned() const;
 
+		//=== Form interaction ===
+
 		void				beSigned(const Bureaucrat &Bureaucrat);
+
+		//=== Exceptions ===
 
 		class GradeTooHighException : public std::exception
 		{
@@ -49,11 +57,11 @@ class Form
 
 	private :
 
-		void				is_grade_valid();
 		bool				is_signed;
 		const std::string	name;
 		const int			grade_sign;
 		const int			grade_exec;
+		void				is_grade_valid();
 };
 
 std::ostream &operator<<(std::ostream &out, Form const &Form);

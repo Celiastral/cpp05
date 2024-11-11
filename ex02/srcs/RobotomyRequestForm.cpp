@@ -6,11 +6,15 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:56:53 by eandre            #+#    #+#             */
-/*   Updated: 2024/11/10 15:37:32 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:35:35 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/RobotomyRequestForm.hpp"
+
+
+//=== Orthodox class mandatory ===
+
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm(72, 45, "Default RobotomyRequestForm"), target("Nobody")
 {
@@ -28,11 +32,6 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other_Roboto
 	std::cout << "Copy RobotomyRequestForm constructor called of target " << this->target << std::endl;
 }
 
-RobotomyRequestForm::~RobotomyRequestForm()
-{
-	std::cout << "Default RobotomyRequestForm destructor called" << std::endl;
-}
-
 RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &other_RobotomyRequestForm)
 {
 	if (other_RobotomyRequestForm.getIsSigned())
@@ -41,6 +40,24 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 	std::cout << "RobotomyRequestForm Copy assignment operator called" << std::endl;
 	return (*this);
 }
+
+RobotomyRequestForm::~RobotomyRequestForm()
+{
+	std::cout << "Default RobotomyRequestForm destructor called" << std::endl;
+}
+
+
+//=== Getter ===
+
+
+const std::string	&RobotomyRequestForm::getTarget() const
+{
+	return (target);
+}
+
+
+//=== Form interaction ===
+
 
 void	RobotomyRequestForm::execute(const Bureaucrat &Bureaucrat) const
 {
@@ -58,9 +75,4 @@ void	RobotomyRequestForm::execute(const Bureaucrat &Bureaucrat) const
 		std::cout << this->getTarget() << " has been robotomized successfully. 😊👍" << std::endl;
 	else
 		std::cout << this->getTarget() << " has NOT been robotomized successfully. 😔" << std::endl;
-}
-
-const std::string	&RobotomyRequestForm::getTarget() const
-{
-	return (target);
 }

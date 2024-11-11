@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:05:33 by eandre            #+#    #+#             */
-/*   Updated: 2024/11/07 14:53:58 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:10:48 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class Bureaucrat
 {
 	public :
 
+		//=== Orthodox class mandatory ===
+
 		Bureaucrat();
 		Bureaucrat(int grade_, const std::string &name_);
 		Bureaucrat(const Bureaucrat &other_Bureaucrat);
@@ -34,13 +36,21 @@ class Bureaucrat
 
 		Bureaucrat			&operator=(const Bureaucrat &other_Bureaucrat);
 
+		//=== Getter ===
+
 		const std::string	&getName() const;
 		int					getGrade() const;
+
+		//=== Grade modification ===
 
 		void				gradeIncrease();
 		void				gradeDecrease();
 
+		//=== Form interaction ===
+
 		void				signForm(const Form &Form);
+
+		//=== Exceptions ===
 
 		class GradeTooHighException : public std::exception
 		{
@@ -56,9 +66,9 @@ class Bureaucrat
 
 	private :
 
-		void				is_grade_valid();
 		const std::string	name;
 		int					grade;
+		void				is_grade_valid();
 		
 };
 

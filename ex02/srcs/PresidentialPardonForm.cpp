@@ -6,11 +6,15 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:56:51 by eandre            #+#    #+#             */
-/*   Updated: 2024/11/10 16:50:29 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:34:50 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/PresidentialPardonForm.hpp"
+
+
+//=== Orthodox class mandatory ===
+
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm(25, 5, "Default PresidentialPardonForm"), target("Nobody")
 {
@@ -28,20 +32,6 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &oth
 	std::cout << "Copy PresidentialPardonForm constructor called of target " << this->target << std::endl;
 }
 
-void	PresidentialPardonForm::execute(const Bureaucrat &Bureaucrat) const
-{
-	if (this->getIsSigned() == false)
-		throw (FormNotSignedException());
-	if (Bureaucrat.getGrade() > this->getGradeExec())
-		throw (GradeTooLowException());
-	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-}
-
-PresidentialPardonForm::~PresidentialPardonForm()
-{
-	std::cout << "Default PresidentialPardonForm destructor called" << std::endl;
-}
-
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &other_PresidentialPardonForm)
 {
 
@@ -52,7 +42,29 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
+PresidentialPardonForm::~PresidentialPardonForm()
+{
+	std::cout << "Default PresidentialPardonForm destructor called" << std::endl;
+}
+
+
+//=== Getter ===
+
+
 const std::string	&PresidentialPardonForm::getTarget() const
 {
 	return (target);
+}
+
+
+//=== Form interaction ===
+
+
+void	PresidentialPardonForm::execute(const Bureaucrat &Bureaucrat) const
+{
+	if (this->getIsSigned() == false)
+		throw (FormNotSignedException());
+	if (Bureaucrat.getGrade() > this->getGradeExec())
+		throw (GradeTooLowException());
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

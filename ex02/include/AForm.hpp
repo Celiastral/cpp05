@@ -21,6 +21,8 @@ class AForm
 {
 	public :
 
+		//=== Orthodox class mandatory ===
+	
 		AForm();
 		AForm(const int grade_sign_, const int grade_exec_, const std::string &name_);
 		AForm(const AForm &other_AForm);
@@ -28,13 +30,19 @@ class AForm
 	
 		AForm				&operator=(const AForm &other_AForm);
 	
+		//=== Getter ===
+
 		const std::string	&getName() const;
 		int					getGradeSign() const;
 		int					getGradeExec() const;
 		bool				getIsSigned() const;
 
+		//=== Form interaction ===
+
 		virtual void		execute(Bureaucrat const & executor) const  = 0;
 		void				beSigned(const Bureaucrat &Bureaucrat);
+
+		//=== Exceptions ===
 
 		class GradeTooHighException : public std::exception
 		{

@@ -6,11 +6,15 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:56:56 by eandre            #+#    #+#             */
-/*   Updated: 2024/11/10 17:43:59 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:36:24 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ShrubberyCreationForm.hpp"
+
+
+//=== Orthodox class mandatory ===
+
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm(145, 137, "Default ShrubberyCreationForm"), target("Nobody")
 {
@@ -28,11 +32,6 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other_
 	std::cout << "Copy ShrubberyCreationForm constructor called of target " << this->target << std::endl;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-	std::cout << "Default ShrubberyCreationForm destructor called" << std::endl;
-}
-
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other_ShrubberyCreationForm)
 {
 	if (other_ShrubberyCreationForm.getIsSigned())
@@ -41,6 +40,24 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	std::cout << "ShrubberyCreationForm Copy assignment operator called" << std::endl;
 	return (*this);
 }
+
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
+	std::cout << "Default ShrubberyCreationForm destructor called" << std::endl;
+}
+
+
+//=== Getter ===
+
+
+const std::string	&ShrubberyCreationForm::getTarget() const
+{
+	return (target);
+}
+
+
+//=== Form interaction ===
+
 
 void	ShrubberyCreationForm::execute(const Bureaucrat &Bureaucrat) const
 {
@@ -68,9 +85,4 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &Bureaucrat) const
 	outfile <<	"			|||" << std::endl;
 	outfile <<	"			|||" << std::endl;
 	outfile <<	"	, -=-~  .-^- _" << std::endl;
-}
-
-const std::string	&ShrubberyCreationForm::getTarget() const
-{
-	return (target);
 }

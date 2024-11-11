@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 13:38:15 by eandre            #+#    #+#             */
-/*   Updated: 2024/11/10 14:43:50 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:26:33 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,20 @@ class PresidentialPardonForm : public AForm
 {
 	public :
 
+		//=== Orthodox class mandatory ===
+
 		PresidentialPardonForm();
 		PresidentialPardonForm(const std::string &target_);
 		PresidentialPardonForm(const PresidentialPardonForm &other_PresidentialPardonForm);
 		~PresidentialPardonForm();
 
 		PresidentialPardonForm			&operator=(const PresidentialPardonForm &other_PresidentialPardonForm);
+	
+		//=== Getter ===
 
 		const std::string	&getTarget() const;
+
+		//=== Form interaction ===
 
 		void		execute(Bureaucrat const &executor) const;
 

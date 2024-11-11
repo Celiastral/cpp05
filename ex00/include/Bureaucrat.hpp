@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:05:33 by eandre            #+#    #+#             */
-/*   Updated: 2024/11/07 14:54:40 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:09:53 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <exception>
+
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
@@ -22,6 +23,8 @@ class Bureaucrat
 {
 	public :
 
+		//=== Orthodox class mandatory ===
+		
 		Bureaucrat();
 		Bureaucrat(int grade_, const std::string &name_);
 		Bureaucrat(const Bureaucrat &other_Bureaucrat);
@@ -29,13 +32,18 @@ class Bureaucrat
 
 		Bureaucrat			&operator=(const Bureaucrat &other_Bureaucrat);
 
+		//=== Getter ===
+
 		const std::string	&getName() const;
 		int					getGrade() const;
+
+		//=== Grade modification ===
 
 		void				gradeIncrease();
 		void				gradeDecrease();
 
-		
+		//=== Exceptions ===
+
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -50,9 +58,9 @@ class Bureaucrat
 	
 	private :
 
-		void				is_grade_valid();
 		const std::string	name;
 		int					grade;
+		void				is_grade_valid();
 	
 };
 

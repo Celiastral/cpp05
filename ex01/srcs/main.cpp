@@ -6,7 +6,7 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:08:29 by eandre            #+#    #+#             */
-/*   Updated: 2024/11/10 16:58:36 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:19:32 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 		}
 		catch (const std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 		}
 	}
 	else
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 	}
 	std::cout << std::endl << "\033[0;32m#### OVERFLOW EXEC ####\033[0m" << std::endl;
 	try
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 	}
 	std::cout << std::endl << "\033[0;32m#### UNDERFLOW SIGN ####\033[0m" << std::endl;
 	try
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 	}
 	std::cout << std::endl << "\033[0;32m#### UNDERFLOW EXEC ####\033[0m" << std::endl;
 	try
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 	}
 	std::cout << std::endl << "\033[0;32m#### FORM SIGN ALREADY SIGNED ####\033[0m" << std::endl;
 	Form		form(1, 150, "yipee i'm a Form");
@@ -91,6 +91,6 @@ int	main(int argc, char **argv)
 	}
 	catch(const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "\033[0;31m" << e.what() << "\033[0m" << std::endl;
 	}
 }

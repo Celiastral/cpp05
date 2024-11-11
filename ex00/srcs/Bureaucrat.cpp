@@ -6,31 +6,32 @@
 /*   By: eandre <eandre@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:08:24 by eandre            #+#    #+#             */
-/*   Updated: 2024/09/23 23:00:11 by eandre           ###   ########.fr       */
+/*   Updated: 2024/11/11 11:04:27 by eandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Bureaucrat.hpp"
+
+
+//=== Orthodox class mandatory ===
+
 
 Bureaucrat::Bureaucrat() : name("Default Bureaucrat"), grade(MIN_GRADE)
 {
 	std::cout << "Default Bureaucrat constructor called" << std::endl;
 }
 
-Bureaucrat::~Bureaucrat()
-{
-	std::cout << "Default Bureaucrat destructor called" << std::endl;
-}
-
 Bureaucrat::Bureaucrat(int grade_, const std::string &name_) : name(name_), grade(grade_)
 {
 	is_grade_valid();
+	
 	std::cout << "Bureaucrat constructor called of name " << this->name << " and of grade " << grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other_Bureaucrat) : name(other_Bureaucrat.getName())
 {
 	*this = other_Bureaucrat;
+
 	std::cout << "Copy Bureaucrat constructor called of name " << this->name << std::endl;
 }
 
@@ -38,9 +39,19 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other_Bureaucrat)
 {
 	grade = other_Bureaucrat.getGrade();
 	is_grade_valid();
+
 	std::cout << "Bureaucrat Copy assignment operator called" << std::endl;
 	return (*this);
 }
+
+Bureaucrat::~Bureaucrat()
+{
+	std::cout << "Default Bureaucrat destructor called" << std::endl;
+}
+
+
+//=== Getter ===
+
 
 const std::string	&Bureaucrat::getName() const
 {
@@ -52,13 +63,34 @@ int	Bureaucrat::getGrade() const
 	return (grade);
 }
 
+
+//=== Grade handeling ===
+
+
+void	Bureaucrat::gradeIncrease()
+{
+	grade--;
+	is_grade_valid();
+}
+
+void	Bureaucrat::gradeDecrease()
+{
+	grade++;
+	is_grade_valid();
+}
+
 void	Bureaucrat::is_grade_valid()
 {
 	if (grade < MAX_GRADE)
 		throw (GradeTooHighException());
+	
 	if (grade > MIN_GRADE)
 		throw (GradeTooLowException());
 }
+
+
+//=== Exceptions ===
+
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -70,20 +102,9 @@ const char	*Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Bureaucrat grade is to low ! Grade needs to be in range 1-150!");
 }
 
-void	Bureaucrat::gradeIncrease()
-{
-	grade--;
-	is_grade_valid();
-}
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &Bureaucrat)
 {
 	out << Bureaucrat.getName() << ", bureaucrat grade " << Bureaucrat.getGrade() << std::endl;
 	return (out);
-}
-
-void	Bureaucrat::gradeDecrease()
-{
-	grade++;
-	is_grade_valid();
 }
